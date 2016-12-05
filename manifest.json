@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name": "FBV-Extesion Tinkering",
+    "version": "0.0.0",
+
+    "description": "FBV Playing around with chrome extension creation in order to access the chrome.* APIs",
+    "author": "FBV",
+
+    "browser_action": {
+        "default_icon": "icons/icon.png"
+    },
+
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["my-content-script.js"],
+        "run_at": "document_end"
+    }],
+
+    "externally_connectable": {
+        "matches": ["http://*.stackoverflow.com/*", "http://localhost:8082/*", "https://2a6eed58.ngrok.io/"]
+    },
+
+    "web_accessible_resources": [
+        "icons/*.png"
+    ],
+
+
+    "permissions": [
+        "tabs",
+        "desktopCapture"
+    ]
+}
